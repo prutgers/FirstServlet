@@ -1,12 +1,15 @@
 package com.mycompany.firstservlet;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class UserDao {
@@ -14,7 +17,20 @@ public class UserDao {
     private Connection connection;
 
     public UserDao() {
-        connection = DbUtil.getConnection();
+                    String drvr = "com.mysql.jdbc.Driver";
+                String url = "jdbc:mysql://localhost:3306/userdb";
+                String usr = "admin";
+                String password = "test";
+        try {
+            Class.forName(drvr);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            connection = DriverManager.getConnection(url, usr, password);
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public void addUser(User user) {
@@ -70,9 +86,9 @@ public class UserDao {
                 ResultSet rs = statement.executeQuery("select * from users");
                 while (rs.next()) {
                     User user = new User();
-                    user.setUserid(rs.getInt("id"));
-                    user.setFirstName(rs.getString("name"));
-                    user.setLastName(rs.getString("country"));
+                    user.setUserid(rs.getInt("userid"));
+                    user.setFirstName(rs.getString("firstname"));
+                    user.setLastName(rs.getString("lastname"));
                     user.setEmail(rs.getString("email"));
                     users.add(user);
                 }

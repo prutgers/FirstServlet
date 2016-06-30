@@ -20,8 +20,8 @@ public class DbUtil {
                 */
                 String driver = "com.mysql.jdbc.Driver";
                 String url = "jdbc:mysql://localhost:3306/userdb";
-                String user = "rsvier";
-                String password = "tiger";
+                String user = "admin";
+                String password = "test";
                 Class.forName(driver);
                 connection = DriverManager.getConnection(url, user, password);
             } catch (ClassNotFoundException e) {

@@ -9,6 +9,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello Wasfasfasforld! <a href="MyFirstServlet">Link</a></h1>
+        <h1>Hello World! <a href="MyFirstServlet">Link</a></h1>
+            <jsp:forward page="/MyFirstServlet?action=listUser" />
     </body>
 </html>

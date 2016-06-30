@@ -21,6 +21,7 @@ public class MyFirstServlet extends HttpServlet {
 	public static final String HTML_START="<html><body>";
 	public static final String HTML_END="</body></html>";
         private static String LIST_USER = "/listuser.jsp";
+        private static String LIST_USER_TEST = "/listusertest.jsp";
         private UserDao dao;
        
     /**
@@ -39,17 +40,21 @@ public class MyFirstServlet extends HttpServlet {
 		//PrintWriter out = response.getWriter();
                // Date date = new Date();
 		//out.println(HTML_START + "<h2>Hi There!</h2><br/><h3>Date="+date +"</h3>" +HTML_END);
-                
+                String action = request.getParameter("action");
+                String forward="";
                // request.setAttribute("user", dao.getUserById(2));
-                
+                if (action.equalsIgnoreCase("doemaweg")){
+                    int userId = Integer.parseInt(request.getParameter("userId"));
+                    dao.deleteUser(userId);
+                    forward = LIST_USER_TEST;
+                } 
+                else {
+                    forward = LIST_USER;
+                }
                 request.setAttribute("users", dao.getAllUsers());
-                RequestDispatcher view = request.getRequestDispatcher(LIST_USER);
+                RequestDispatcher view = request.getRequestDispatcher(forward);
                 view.forward(request, response);
-                
 	}
-        
-        
-        
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

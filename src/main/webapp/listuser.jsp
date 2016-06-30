@@ -28,8 +28,8 @@
                     <td><c:out value="${user.lastName}" /></td>
                     
                     <td><c:out value="${user.email}" /></td>
-                    <td><a href="UserController?action=edit&userId=<c:out value="${user.userid}"/>">Update</a></td>
-                    <td><a href="UserController?action=delete&userId=<c:out value="${user.userid}"/>">Delete</a></td>
+                    <td><a href="MyFirstServlet?action=edit&userId=<c:out value="${user.userid}"/>">Update</a></td>
+                    <td><a href="MyFirstServlet?action=doemaweg&userId=<c:out value="${user.userid}"/>">Deleteofzo</a></td>
                 </tr>
             </c:forEach>
         </tbody>

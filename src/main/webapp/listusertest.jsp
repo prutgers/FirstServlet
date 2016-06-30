@@ -21,9 +21,7 @@
         <tbody>
             <c:forEach items="${users}" var="user">
                 <tr>
-                    <td><c:out value="${user.name}" /></td>
-                    <td><a href="UserController?action=edit&userId=<c:out value="${user.name}"/>">Update</a></td>
-                    <td><a href="UserController?action=delete&userId=<c:out value="${user.name}"/>">Delete</a></td>
+                    <td><c:out value="${user.firstName}" /></td>
                 </tr>
             </c:forEach>
         </tbody>

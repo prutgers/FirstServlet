@@ -5,7 +5,7 @@ import java.util.Date;
 public class User {
 
     private int userid;
-    private String name;
+    private String firstname;
     private String lastName;
     
     private String email;
@@ -16,10 +16,10 @@ public class User {
         this.userid = userid;
     }
     public String getFirstName() {
-        return name;
+        return firstname;
     }
     public void setFirstName(String firstName) {
-        this.name = firstName;
+        this.firstname = firstName;
     }
     public String getLastName() {
         return lastName;
@@ -37,7 +37,7 @@ public class User {
     }
     @Override
     public String toString() {
-        return "User [userid=" + userid + ", name=" + name
+        return "User [userid=" + userid + ", name=" + firstname
                 + ", lastName=" + lastName + ", email="
                 + email + "]";
     }    
